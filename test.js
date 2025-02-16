@@ -1,26 +1,49 @@
-const openButton = document.querySelector('button[data-action="open-modal"]');
-const closeButton = document.querySelector('button[data-action="close-modal"]');
-openButton.addEventListener("click", () => {
-document.body.classList.add("show-modal");
-});
-closeButton.addEventListener("click", () => {
-    document.body.classList.remove("show-modal");
-});
+// 1
+const openButton = document.querySelector('[data-action="open-modal"]')
+console.log(openButton)
+const closeButton = document.querySelector('[data-action="close-modal"]')
+const backdrop = document.querySelector(".js-backdrop")
+openButton.addEventListener("click", () =>{
+    backdrop.style.opacity = "1";
+    backdrop.style.visibility = "visible";
+    backdrop.style.pointerEvents = "initial"
+})
+
+closeButton.addEventListener("click", () =>{
+    backdrop.style.opacity = "0";
+    backdrop.style.visibility = "hidden";
+    backdrop.style.pointerEvents = "none"
+})
+
 //2
-const backdrop = document.querySelector(".backdrop");
-backdrop.addEventListener("click", () => {
-    document.body.classList.remove("show-modal");
-});
+
+backdrop.addEventListener("click", () =>{
+    backdrop.style.opacity = "0";
+    backdrop.style.visibility = "hidden";
+    backdrop.style.pointerEvents = "none"
+})
+
 //3
-const red = document.querySelector("input[value='red']");
-const white = document.querySelector("input[value='white']");
-const green = document.querySelector("input[value='green']");
-red.addEventListener("change", () => {
-    document.body.style.backgroundColor = "red";
-});
-white.addEventListener("change", () => {
-    document.body.style.backgroundColor = "white";
-});
-green.addEventListener("change", () => {
-    document.body.style.backgroundColor = "green";
-});
+const body = document.querySelector("body")
+const colorRed = document.querySelector('[value="red"]')
+const colorWhite = document.querySelector('[value="white"]')
+const colorGreen = document.querySelector('[value="green"]')
+console.log(colorRed)
+colorRed.addEventListener("change", (event) =>{
+    const statusCheck = event.target.checked;
+    if (statusCheck === true) {
+        body.style.backgroundColor = "red"
+      } 
+})
+colorWhite.addEventListener("change", (event) =>{
+    const statusCheck = event.target.checked;
+    if (statusCheck === true) {
+        body.style.backgroundColor = "white"
+      } 
+})
+colorGreen.addEventListener("change", (event) =>{
+    const statusCheck = event.target.checked;
+    if (statusCheck === true) {
+        body.style.backgroundColor = "green"
+      } 
+})
