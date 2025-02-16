@@ -1,28 +1,17 @@
-// 1
-const openButton = document.querySelector('[data-action="open-modal"]')
-console.log(openButton)
-const closeButton = document.querySelector('[data-action="close-modal"]')
-const backdrop = document.querySelector(".js-backdrop")
-openButton.addEventListener("click", () =>{
-    backdrop.style.opacity = "1";
-    backdrop.style.visibility = "visible";
-    backdrop.style.pointerEvents = "initial"
-})
-
-closeButton.addEventListener("click", () =>{
-    backdrop.style.opacity = "0";
-    backdrop.style.visibility = "hidden";
-    backdrop.style.pointerEvents = "none"
-})
-
+//1
+const openButton = document.querySelector('button[data-action="open-modal"]');
+const closeButton = document.querySelector('button[data-action="close-modal"]');
+openButton.addEventListener("click", () => {
+document.body.classList.add("show-modal");
+});
+closeButton.addEventListener("click", () => {
+    document.body.classList.remove("show-modal");
+});
 //2
-
-backdrop.addEventListener("click", () =>{
-    backdrop.style.opacity = "0";
-    backdrop.style.visibility = "hidden";
-    backdrop.style.pointerEvents = "none"
-})
-
+const backdrop = document.querySelector(".backdrop");
+backdrop.addEventListener("click", () => {
+    document.body.classList.remove("show-modal");
+});
 //3
 const body = document.querySelector("body")
 const colorRed = document.querySelector('[value="red"]')
