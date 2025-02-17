@@ -36,3 +36,23 @@ colorGreen.addEventListener("change", (event) =>{
         body.style.backgroundColor = "green"
       } 
 })
+
+//4
+const text = document.querySelector("input#name-input");
+const textCont = document.querySelector("span#name-output")
+text.addEventListener("input",  (event) => {
+    textCont.textContent = text.value.trim();
+   if(text.value.trim() === ""){
+   textCont.textContent = "незнайомець";
+}
+});
+const invalid = document.querySelector("input#validation-input");
+invalid.addEventListener("input", (event) => {
+    if(invalid.value.length >= 6){
+        invalid.classList.add("valid");
+        invalid.classList.remove("invalid");
+     }else{
+        invalid.classList.remove("valid");
+        invalid.classList.add("invalid");
+     }
+});
