@@ -1,46 +1,65 @@
-//1
-const openButton = document.querySelector('button[data-action="open-modal"]');
-const closeButton = document.querySelector('button[data-action="close-modal"]');
-openButton.addEventListener("click", (event) => {
-document.body.classList.add("show-modal");
-});
-closeButton.addEventListener("click", (event) => {
+// #1-2
+const modalOpen = document.querySelector('[data-action="open-modal"]');
+const modalClose = document.querySelector('[data-action="close-modal"]');
+const modalBackdrop = document.querySelector('[data-action="modal"]');
 
+modalOpen.addEventListener("click", (event) => {
+  modalBackdrop.style.display = "block";
 });
-//2
-const backdrop = document.querySelector(".backdrop");
-backdrop.addEventListener("click", (event) => {
-    document.body.classList.remove("show-modal");
+
+modalClose.addEventListener("click", (event) => {
+  modalBackdrop.style.display = "none";
 });
+
+window.addEventListener("click", (event) => {
+    if(event.target === modalBackdrop){
+        modalBackdrop.style.display = "none"
+    }
+})
+
 //3
 const red = document.querySelector("input[value='red']");
 const white = document.querySelector("input[value='white']");
 const green = document.querySelector("input[value='green']");
 red.addEventListener("change", (event) => {
-    document.body.style.backgroundColor = "red";
+  document.body.style.backgroundColor = "red";
 });
 white.addEventListener("change", () => {
-    document.body.style.backgroundColor = "white";
+  document.body.style.backgroundColor = "white";
 });
 green.addEventListener("change", () => {
-    document.body.style.backgroundColor = "green";
+  document.body.style.backgroundColor = "green";
 });
-//4
-const text = document.querySelector("input#name-input");
-const textCont = document.querySelector("span#name-output")
-text.addEventListener("input",  (e) => {
-    textCont.textContent = text.value.trim();
-   if(text.value.trim() === ""){
-   textCont.textContent = "незнайомець";
+
+
+// #4
+const nameImput = document.getElementById("name-input")
+const nameOutPut = document.getElementById("name-output")
+
+nameImput.addEventListener("input", (event) =>{
+if(nameImput.value){
+    nameOutPut.textContent = nameImput.value
+}else{
+    nameOutPut.textContent = "Незнайомець"
 }
-});
-const invalid = document.querySelector("input#validation-input");
-invalid.addEventListener("input", () => {
-    if(invalid.value.length >= 6){
-        invalid.classList.add("valid");
-        invalid.classList.remove("invalid");
-     }else{
-        invalid.classList.remove("valid");
-        invalid.classList.add("invalid");
-     }
-});
+})
+
+
+// -------------------------
+const validText = document.getElementById("validation-input");
+validText.addEventListener("input", () => {
+    if(validText.value.length >= 6){
+        validText.style.borderColor = "green"
+        }else{
+        validText.style.borderColor = "red"
+        }
+})
+
+// #5
+
+const bigTextElement = document.querySelector(".big-text");
+const spanTextElemrnt = document.querySelector(".text");
+
+bigTextElement.addEventListener("input", () => {
+    spanTextElemrnt.style.fontSize = `${bigTextElement.value}px`
+})
