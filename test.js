@@ -52,7 +52,7 @@ validText.addEventListener("input", () => {
         validText.style.borderColor = "green"
         }else{
         validText.style.borderColor = "red"
-        }
+        } 
 })
 
 // #5
